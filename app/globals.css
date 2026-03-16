@@ -4,12 +4,31 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+section {
+  outline: 5px solid red !important;
+}
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Primary Colors */
+  --color-primary-100: #0f5b75;
+  --color-primary-200: #169dd8;
+
+  /* Accent Color */
+  --color-accent: #fdb715;
+
+  /* Base Color */
+  --color-base-100: #f1f2f2;
+
+  /* Secondary Colors */
+  --color-secondary-100: #85bd40;
+  --color-secondary-200: #5a7735;
+  --color-secondary-300: #849669;
+  --color-secondary-400: #3a3a3a;
 }
 
 @media (prefers-color-scheme: dark) {
