@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  console.log(pathname);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -29,31 +32,39 @@ export default function Navbar() {
             <div className="ml-10 flex items-baseline space-x-4">
               <Link
                 href="/"
-                className="relative group text-primary-100 font-bold  py-1 hover:text-primary-200 rounded-md text-sm transition-all flex flex-col justify-center items-center"
+                className={`relative group text-primary-100 font-bold  py-1 hover:text-primary-200 rounded-md text-sm transition-all flex flex-col justify-center items-center ${pathname === "/" ? "text-primary-200" : ""}`}
               >
                 Home
-                <span className=" absolute bottom-px left-0 w-full -mt-4 h-0.5 mx-auto rounded-2xl bg-primary-200 origin-center scale-x-10 transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <span
+                  className={`absolute bottom-px left-0 w-full -mt-4 h-0.5 mx-auto rounded-2xl bg-primary-200 origin-center scale-x-10 transition-transform duration-300 ease-out group-hover:scale-x-100 ${pathname === "/" ? "scale-x-100" : ""}`}
+                />
               </Link>
               <Link
                 href="/departments"
-                className="relative group text-primary-100 font-bold  py-1 hover:text-primary-200  rounded-md text-sm  transition-all"
+                className={`relative group text-primary-100 font-bold  py-1 hover:text-primary-200  rounded-md text-sm  transition-all ${pathname === "/departments" ? "text-primary-200" : ""}`}
               >
                 Departments
-                <span className="absolute bottom-px left-0 w-full -mt-4 h-0.5 mx-auto rounded-2xl bg-primary-200 origin-center scale-x-10 transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <span
+                  className={`absolute bottom-px left-0 w-full -mt-4 h-0.5 mx-auto rounded-2xl bg-primary-200 origin-center scale-x-10 transition-transform duration-300 ease-out group-hover:scale-x-100 ${pathname === "/departments" ? "scale-x-100" : ""}`}
+                />
               </Link>
               <Link
                 href="/services"
-                className="relative group text-primary-100 font-bold py-1 hover:text-primary-200  rounded-md text-sm  transition-all"
+                className={`relative group text-primary-100 font-bold py-1 hover:text-primary-200  rounded-md text-sm  transition-all ${pathname === "/services" ? "text-primary-200" : ""}`}
               >
                 Services
-                <span className="absolute bottom-px left-0 w-full -mt-4 h-0.5 mx-auto rounded-2xl bg-primary-200 origin-center scale-x-10 transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <span
+                  className={`absolute bottom-px left-0 w-full -mt-4 h-0.5 mx-auto rounded-2xl bg-primary-200 origin-center scale-x-10 transition-transform duration-300 ease-out group-hover:scale-x-100 ${pathname === "/services" ? "scale-x-100" : ""}`}
+                />
               </Link>
               <Link
                 href="/contact"
-                className="relative group text-primary-100 font-bold  py-1 hover:text-primary-200  rounded-md text-sm  transition-all"
+                className={`relative group text-primary-100 font-bold  py-1 hover:text-primary-200  rounded-md text-sm  transition-all ${pathname === "/contact" ? "text-primary-200" : ""}`}
               >
                 Contact
-                <span className="absolute bottom-px left-0 w-full -mt-4 h-0.5 mx-auto rounded-2xl bg-primary-200 origin-center scale-x-10 transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <span
+                  className={`absolute bottom-px left-0 w-full -mt-4 h-0.5 mx-auto rounded-2xl bg-primary-200 origin-center scale-x-10 transition-transform duration-300 ease-out group-hover:scale-x-100 ${pathname === "/contact" ? "scale-x-100" : ""}`}
+                />
               </Link>
             </div>
           </div>
