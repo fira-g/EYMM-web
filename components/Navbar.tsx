@@ -35,10 +35,10 @@ export default function Navbar() {
                 <span className=" absolute bottom-px left-0 w-full -mt-4 h-0.5 mx-auto rounded-2xl bg-primary-200 origin-center scale-x-10 transition-transform duration-300 ease-out group-hover:scale-x-100" />
               </Link>
               <Link
-                href="/about"
+                href="/departments"
                 className="relative group text-primary-100 font-bold  py-1 hover:text-primary-200  rounded-md text-sm  transition-all"
               >
-                About
+                Departments
                 <span className="absolute bottom-px left-0 w-full -mt-4 h-0.5 mx-auto rounded-2xl bg-primary-200 origin-center scale-x-10 transition-transform duration-300 ease-out group-hover:scale-x-100" />
               </Link>
               <Link

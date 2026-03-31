@@ -5,15 +5,21 @@ import ActivityCard from "@/components/ActivityCard";
 import {
   Atom,
   BarChart,
+  Binoculars,
   Church,
+  Eye,
   Leaf,
   LucideQuote,
   Quote,
   School,
   SunIcon,
+  Target,
+  TargetIcon,
   TextQuote,
 } from "lucide-react";
 import TestimonyCard from "@/components/TestimonyCard";
+import Footer from "@/components/Footer";
+import Donation from "@/components/Donation";
 
 const images = [
   "/bg.png",
@@ -85,9 +91,8 @@ const testimonies = [
 
 export default function Home() {
   return (
-    <div className="flex text-black text-min-h-screen flex-col bg-[url('/bg.png')] bg-cover bg-center bg-base-100 max-h-screen">
-      <div className=" flex flex-col justify-center items-center">
-        <Navbar />
+    <div className="flex text-black min-h-screen flex-col bg-[url('/bg.png')] bg-cover bg-center bg-base-100 max-h-screen">
+      <div className=" flex flex-col justify-center items-center gap-0">
         <main className="flex  min-h-screen w-full mx-auto flex-col items-center justify-center ">
           {/* Hero Section */}
 
@@ -124,7 +129,8 @@ export default function Home() {
               </div>
               <div className="flex flex-col w-full   bg-gray-300 items-center  justify-evenly">
                 <div className=" flex flex-1 justify-center px-auto sm:px-20 md:px-50 lg:px-80 py-20">
-                  <div className="flex-1 flex flex-col justify-center items-center pr-15 gap-3">
+                  <div className="flex-1 flex flex-col  items-center pr-15 gap-3">
+                    <Eye size={36} className="text-primary-200" />
                     <h1 className="text-3xl font-extrabold">
                       Our <span className="text-primary-200">Vision</span>
                     </h1>
@@ -134,7 +140,8 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="h-full rounded w-1 bg-primary-200"></div>
-                  <div className="flex-1  flex flex-col justify-center items-center pl-15 gap-3">
+                  <div className="flex-1  flex flex-col  items-center pl-15 gap-3">
+                    <TargetIcon size={36} className="text-primary-200" />
                     <h1 className="text-3xl font-extrabold">
                       Our <span className="text-primary-200">Mission</span>
                     </h1>
@@ -237,7 +244,7 @@ export default function Home() {
             <h2 className="font-extrabold text-2xl">Our Next Steps</h2>
             <div className="flex justify-evenly w-full gap-2">
               <div className="flex flex-col justify-center items-center gap-1 max-w-35">
-                <BarChart />
+                <BarChart size={30} />
                 <p className="text-center">Expand to 150 Coordinators</p>
               </div>
               <div className="flex flex-col justify-center items-center gap-1 max-w-35">
@@ -265,35 +272,8 @@ export default function Home() {
 
           {/* Donate */}
 
-          <section className="bg-base-100  w-full flex flex-col items-center gap-4 py-16">
-            <h2 className="text-2xl font-extrabold">
-              Be part of the movement by giving
-            </h2>
-            <div className="flex gap-30 mt-4">
-              <div className="flex gap-1">
-                <Image
-                  src={"/telebirr.png"}
-                  alt="telebirr logo"
-                  width={60}
-                  height={20}
-                />
-                <div className="">
-                  <p className="">+251936197341</p>
-                  <p className="">Hiwot Abebe</p>
-                  <p className="">Director of operations</p>
-                </div>
-              </div>
-              <div className="flex gap-1">
-                <Image src={"/cbe.png"} alt="cbe logo" width={60} height={20} />
-                <div className="">
-                  <p className="">1000421527605</p>
-                  <p className="">Ethiopian Youth Mission Mov. Mins.</p>
-                </div>
-              </div>
-            </div>
-
-            <button className="bg-accent px-2 py-1 rounded-lg">Donate</button>
-          </section>
+          <Donation />
+          <Footer />
         </main>
       </div>
     </div>

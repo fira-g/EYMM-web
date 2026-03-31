@@ -4,9 +4,6 @@
   --background: #ffffff;
   --foreground: #171717;
 }
-section {
-  outline: 5px solid red !important;
-}
 
 @theme inline {
   --color-background: var(--background);
