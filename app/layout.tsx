@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto_Mono, Noto_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import ModalProvider from "@/components/ModalProvider";
 
 const robotoMono = Roboto_Mono({
   subsets: ["latin"],
@@ -27,8 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" title="EYMM">
       <body className={notoSans.className}>
-        <Navbar />
-        {children}
+        <ModalProvider>{children}</ModalProvider>
       </body>
     </html>
   );

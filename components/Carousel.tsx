@@ -24,6 +24,15 @@ export default function Carousel({
 }: CarouselProps) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Track screen size to update the Framer Motion math
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const next = () => {
     setIndex((prev) => (prev + 1) % activities.length);
@@ -43,6 +52,10 @@ export default function Carousel({
     return () => clearInterval(id);
   }, [index, autoSlide, interval, paused]);
 
+  // Math logic: on mobile shift by 100%, on desktop shift by 33.33%
+  const multiplier = isMobile ? 100 : 33.333;
+  const centerOffset = isMobile ? 0 : 33.333;
+
   return (
     <div
       className="relative w-full max-w-7xl mx-auto overflow-hidden py-10 px-4"
@@ -52,13 +65,9 @@ export default function Carousel({
       <motion.div
         className="flex"
         animate={{
-          // This moves the track so the "index" is always centered
-          // 33.33% is the width of one card.
-          // We shift by (index * 33.33) to align the start, then add 33.33 to offset it to center.
-          x: `calc(-${index * 33.333}% + 33.333%)`,
+          x: `calc(-${index * multiplier}% + ${centerOffset}%)`,
         }}
         transition={{
-          //   type: "spring",
           stiffness: 260,
           damping: 20,
           duration: 0.8,
@@ -71,9 +80,9 @@ export default function Carousel({
           return (
             <motion.div
               key={i}
-              className="min-w-[33.333%] flex justify-center px-3"
+              className="min-w-full md:min-w-[33.333%] flex justify-center px-3"
               animate={{
-                scale: isActive ? 1.2 : 0.85,
+                scale: isActive ? (isMobile ? 1 : 1.2) : 0.85,
                 opacity: isActive ? 1 : 0.6,
               }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -89,17 +98,17 @@ export default function Carousel({
         })}
       </motion.div>
 
-      {/* Navigation Buttons */}
+      {/* Navigation Buttons - Hidden on small mobile screens for better UX */}
       <button
         onClick={prev}
-        className="absolute left-10 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-black p-3 rounded-full shadow-lg transition"
+        className="absolute left-2 md:left-10 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-black p-2 md:p-3 rounded-full shadow-lg transition"
       >
         ❮
       </button>
 
       <button
         onClick={next}
-        className="absolute right-10 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-black p-3 rounded-full shadow-lg transition"
+        className="absolute right-2 md:right-10 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-black p-2 md:p-3 rounded-full shadow-lg transition"
       >
         ❯
       </button>

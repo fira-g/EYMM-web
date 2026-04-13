@@ -3,8 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { useModal } from "./ModalProvider";
 
 export default function Navbar() {
+  const { openModal } = useModal();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   console.log(pathname);
@@ -23,7 +26,13 @@ export default function Navbar() {
               href="/"
               className="text-xl font-bold text-gray-900 dark:text-white"
             >
-              <img src="/logo.png" alt="" className="size-12" />
+              <Image
+                src="/logo.png"
+                alt="EYMM Logo"
+                width={40}
+                height={40}
+                className="inline-block mr-2"
+              />
             </Link>
           </div>
 
@@ -68,7 +77,10 @@ export default function Navbar() {
               </Link>
             </div>
           </div>
-          <button className=" text-base-100 px-6 py-1 rounded-md bg-primary-100 hover:bg-primary-100/20 border-primary-100 border-2 hover:text-primary-100 cursor-pointer transition-all">
+          <button
+            onClick={openModal}
+            className=" text-base-100 px-6 py-1 rounded-md bg-primary-100 hover:bg-primary-100/20 border-primary-100 border-2 hover:text-primary-100 cursor-pointer transition-all"
+          >
             Pray
           </button>
 

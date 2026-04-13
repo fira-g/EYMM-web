@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Carousel from "@/components/Carousel";
@@ -108,28 +110,28 @@ export default function Home() {
           </section>
 
           {/* About Section-vision and misssion  */}
-          <section className="bg-base-100  min-h-screen w-full flex">
+          <section className="bg-base-100   w-full flex">
             <div className=" flex flex-col gap-10 justify-between items-center">
-              <div className="flex max-w-xl flex-col gap-1 items-center justify-center pt-10">
+              <div className="flex max-w-lg lg:max-w-xl flex-col gap-1 items-center justify-center pt-10">
                 <p className="text-black text-xs font-extralight">
                   A little about
                   <span className="font-extrabold text-primary-200"> EYMM</span>
                 </p>
                 <h1 className="text-3xl text-black font-bold">Who Are We ?</h1>
-                <p className="text-center mt-2">
+                <p className="text-center mt-2 px-2">
                   Ethiopian Youth Mission Movement (EYMM) is a
                   mission-mobilizing movement passionate about seeing Ethiopian
                   believers actively engaded in God's global mission.
                 </p>
-                <p className="text-center mt-3">
+                <p className="text-center mt-3 px-2">
                   We exist to inspirre and equip youth to share the Gospel,
                   starting with their families and communities, crossing
                   cultural boundaries and reaching unreached nations.
                 </p>
               </div>
-              <div className="flex flex-col w-full   bg-gray-300 items-center  justify-evenly">
-                <div className=" flex flex-1 justify-center px-auto sm:px-20 md:px-50 lg:px-80 py-20">
-                  <div className="flex-1 flex flex-col  items-center pr-15 gap-3">
+              <div className="flex flex-col w-full   bg-gray-300 items-center  justify-evenly ">
+                <div className=" flex flex-1 flex-col justify-center items-center gap-6 px-8 py-8 md:flex-row md:py-10 md:justify-around md:px-40">
+                  <div className="flex-1 flex flex-col  items-center gap-3">
                     <Eye size={36} className="text-primary-200" />
                     <h1 className="text-3xl font-extrabold">
                       Our <span className="text-primary-200">Vision</span>
@@ -139,8 +141,8 @@ export default function Home() {
                       unreached
                     </p>
                   </div>
-                  <div className="h-full rounded w-1 bg-primary-200"></div>
-                  <div className="flex-1  flex flex-col  items-center pl-15 gap-3">
+                  <div className="w-[80%] rounded h-0.5 bg-primary-200 md:w-1 md:h-full"></div>
+                  <div className="flex-1  flex flex-col  items-center  gap-3">
                     <TargetIcon size={36} className="text-primary-200" />
                     <h1 className="text-3xl font-extrabold">
                       Our <span className="text-primary-200">Mission</span>
@@ -167,7 +169,7 @@ export default function Home() {
                 Recent Activities
               </h1>
             </div>
-            <div className="mt-10">
+            <div className="mt-10 ">
               <Carousel activities={activities} />
             </div>
           </section>
@@ -269,8 +271,6 @@ export default function Home() {
               </div>
             </div>
           </section>
-
-          {/* Donate */}
 
           <Donation />
           <Footer />
